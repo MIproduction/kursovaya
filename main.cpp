@@ -5,6 +5,36 @@
 #include <conio.h>
 #include <iostream>
 
+
+void ninja();
+
+int main() {
+	int n;
+	while(n != 4){
+		system("cls");
+		printf("1.Start""\n"
+			"2.Rules""\n"
+			"3.Records""\n"
+			"4.Exit""\n");
+		printf("Enter the menu item:");
+		scanf("%d", &n);
+
+		switch (n)
+		{
+		case 1:
+			ninja();
+			break;
+		case 2:
+			system("cls");
+			printf("rules");
+			system("pause");
+			break;
+		default: break;
+		
+	}
+}
+}
+
 void ninja() {
 	char a[10];
 	int step=0,i=0;
@@ -46,30 +76,4 @@ void ninja() {
 			printf("%c", 176);
 		}
 	printf("\nBRAVO\n");
-}
-
-int main() {
-	int n;
-	while(n != 4){
-		system("cls");
-		printf("Start""\n"
-			"Rules""\n"
-			"Records""\n"
-			"Exit""\n");
-		scanf("%d", &n);
-
-		switch (n)
-		{
-		case 1:
-			ninja();
-			break;
-		case 2:
-			system("cls");
-			printf("rules");
-			system("pause");
-			break;
-		default: break;
-		
-	}
-}
 }
