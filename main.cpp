@@ -3,8 +3,9 @@
 #include <time.h>
 #include <Windows.h>
 #include <conio.h>
+#include <iostream>
 
-int main() {
+void ninja() {
 	char a[10];
 	int step=0,i=0;
 	time_t c=time(0);
@@ -45,6 +46,30 @@ int main() {
 			printf("%c", 176);
 		}
 	printf("\nBRAVO\n");
-	system("pause");
-	return 0;
+}
+
+int main() {
+	int n;
+	while(n != 4){
+		system("cls");
+		printf("Start""\n"
+			"Rules""\n"
+			"Records""\n"
+			"Exit""\n");
+		scanf("%d", &n);
+
+		switch (n)
+		{
+		case 1:
+			ninja();
+			break;
+		case 2:
+			system("cls");
+			printf("rules");
+			system("pause");
+			break;
+		default: break;
+		
+	}
+}
 }
