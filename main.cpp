@@ -26,7 +26,11 @@ int main() {
 			break;
 		case 2:
 			system("cls");
-			printf("rules");
+			printf("KeyboardNinja is a program that can help you improve your typing skills on the keyboard. And you can track your progress with high score table that is in 'Records' menu item.""\n "
+			"Rules of this program are very simple: in 'Start' menu item you can choose the difficult of the text; you need to type the text on the screen;""\n"
+			"at the start of session you will have 1000 points; if you typed the right symbol it will change color to green,otherwise it will change color to red and you will lose 10 points;""\n"
+			"the session will end when you are typed all the text on the screen; your final score will be calculated by this formula-'your points/the time you are spent to type the text'.""\n"
+			"Good Luck & Have Fun!");
 			system("pause");
 			break;
 		default: break;
