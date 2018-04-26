@@ -10,7 +10,7 @@ void ninja();
 
 int main() {
 	int n;
-	while(n != 4){
+	do{
 		system("cls");
 		printf("1.Start""\n"
 			"2.Rules""\n"
@@ -35,8 +35,8 @@ int main() {
 			break;
 		default: break;
 		
-	}
-}
+		}
+	} while (n != 4);
 }
 
 void ninja() {
