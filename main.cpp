@@ -4,12 +4,17 @@
 #include <Windows.h>
 #include <conio.h>
 #include <iostream>
+#include <ctype.h>
+
+HANDLE consoleHandle = 0;
 
 
+void setupsystem();
 void ninja();
 
 int main() {
 	int n;
+	setupsystem();
 	do{
 		system("cls");
 		printf("1.Start""\n"
@@ -39,9 +44,13 @@ int main() {
 	} while (n != 4);
 }
 
+void setupsystem() {
+	consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+}
+
 void ninja() {
 	char a[10];
-	int step=0,i=0;
+	int step=0,i=0,triger=0;
 	time_t c=time(0);
 	srand(c);
 	for (i = 0; i < 10; i++) {
@@ -55,29 +64,73 @@ void ninja() {
 	}
 	printf("\nGo!\n");
 	Sleep(1500);
-	do
-	{
-		system("cls");
-		for (i = 0; i < 10; i++) {
-			if (i < step) {
-				printf("%c", 176);
-			}
-			else {
-				printf("%c", a[i]);
-			}
-		}
-		char input = _getch();
-		if (input == a[step]) {
-			step++;
-		}
-		else {
-			printf("\nYou are made mistake\n");
-			Sleep(500);
-		}
-	} while (step < 10);
 	system("cls");
 	for (i = 0; i < 10; i++) {
-			printf("%c", 176);
+		if (i < step) {
+			printf("%c", a[i]);
 		}
+		else {
+			printf("%c", a[i]);
+		}
+	}
+	do
+	{
+		
+		char input = _getch();
+		triger = 0;
+		if (input == a[step]) {
+			step++;
+			system("cls");
+			for (i = 0; i < 10; i++) {
+				if (i < step) {
+					SetConsoleTextAttribute(consoleHandle, 10);
+					printf("%c", a[i]);
+					SetConsoleTextAttribute(consoleHandle, 15);
+				}
+				else {
+
+					printf("%c", a[i]);
+
+				}
+			}
+		}
+		else {
+			system("cls");
+			for (i = 0; i < 10; i++) {
+				if (i < step) {
+					SetConsoleTextAttribute(consoleHandle, 10);
+					printf("%c", a[i]);
+				}
+				else {
+					if ((a[i] == a[step]) && (triger==0)) {
+						SetConsoleTextAttribute(consoleHandle, 12);
+						printf("%c", a[i]);
+						triger = 1;
+					}
+					else {
+						SetConsoleTextAttribute(consoleHandle, 15);
+						printf("%c", a[i]);
+					
+					}
+				}
+			}
+			SetConsoleTextAttribute(consoleHandle, 15);
+			printf("\nYou are made mistake\n");
+		}
+
+	
+	} while (step < 10);
+	system("cls");
+	SetConsoleTextAttribute(consoleHandle, 10);
+	for (i = 0; i < 10; i++) {
+		if (i < step) {
+			printf("%c", a[i]);
+		}
+		else {
+			printf("%c", a[i]);
+		}
+	}
+	SetConsoleTextAttribute(consoleHandle, 15);
 	printf("\nBRAVO\n");
+	system("pause");
 }
