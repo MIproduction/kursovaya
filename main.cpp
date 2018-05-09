@@ -5,6 +5,7 @@
 #include <conio.h>
 #include <iostream>
 #include <ctype.h>
+#include <ctime> 
 
 HANDLE consoleHandle = 0;
 
@@ -52,7 +53,7 @@ void setupsystem() {
 
 void ninja() {
 	char a[10];
-	int step=0,i=0,triger=0;
+	int step=0,i=0,triger=0,s=1000;
 	time_t c=time(0);
 	srand(c);
 	for (i = 0; i < 10; i++) {
@@ -75,9 +76,10 @@ void ninja() {
 			printf("%c", a[i]);
 		}
 	}
+	clock_t t0 = clock(); 
 	do
 	{
-		
+		printf("\n%i", s);
 		char input = _getch();
 		triger = 0;
 		if (input == a[step]) {
@@ -108,6 +110,7 @@ void ninja() {
 						SetConsoleTextAttribute(consoleHandle, 12);
 						printf("%c", a[i]);
 						triger = 1;
+						s=s-10;
 					}
 					else {
 						SetConsoleTextAttribute(consoleHandle, 15);
@@ -117,7 +120,7 @@ void ninja() {
 				}
 			}
 			SetConsoleTextAttribute(consoleHandle, 15);
-			printf("\nYou are made mistake\n");
+			printf("\t\t\tYou made a mistake");
 		}
 
 	
@@ -133,6 +136,8 @@ void ninja() {
 		}
 	}
 	SetConsoleTextAttribute(consoleHandle, 15);
+	clock_t t1 = clock(); 
+	printf("               Score: %i\n",(s/((t1-t0)/CLK_TCK)));
 	printf("\nBRAVO\n");
 	system("pause");
 }
