@@ -61,38 +61,42 @@ void textinit()
 {
 	FILE *file_ptr;
 	int n;
-	printf("Select the complexity of the text\n1.Easy\n2.Medium\n3.HARD\n");
-	scanf("%d", &n);
-	switch (n)
+	do
 	{
-	case 1:
-		len = 104;
-		a = new char[len+1];
-		file_ptr = fopen("EzText.txt", "r");
-		fgets(a, len+1, file_ptr);
-		break;
-	case 2:
-		len = 144;
-		a = new char[len+1];
-		file_ptr = fopen("MedText.txt", "r");
-		fgets(a, len+1, file_ptr);
-		break;
-	case 3:
-		len = 205;
-		a = new char[len+1];
-		file_ptr = fopen("HardText.txt", "r");
-		fgets(a, len+1, file_ptr);
-		break;
-	default:
-
-		break;
-	}
+		system("cls");
+		printf("Select the complexity of the text\n1.Easy\n2.Medium\n3.HARD\n");
+		scanf("%d", &n);
+		switch (n)
+		{
+		case 1:
+			len = 104;
+			a = new char[len+1];
+			file_ptr = fopen("EzText.txt", "r");
+			fgets(a, len+1, file_ptr);
+			break;
+		case 2:
+			len = 144;
+			a = new char[len+1];
+			file_ptr = fopen("MedText.txt", "r");
+			fgets(a, len+1, file_ptr);
+			break;
+		case 3:
+			len = 205;
+			a = new char[len+1];
+			file_ptr = fopen("HardText.txt", "r");
+			fgets(a, len+1, file_ptr);
+			break;
+		default:
+			printf("invalid input");
+			Sleep(800);
+			break;
+		}
+	} while (n != 1 && n != 2 && n != 3);
 
 }
 
 void ninja() 
 {
-	system("cls");
 	textinit();
 	int step=0,i=0,triger=0,s=1000;
 	time_t c=time(0);
