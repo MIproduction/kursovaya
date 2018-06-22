@@ -13,10 +13,12 @@ HANDLE consoleHandle = 0;
 void setupsystem();
 void ninja();
 
-int main() {
+int main() 
+{
 	int n;
 	setupsystem();
-	do{
+	do
+	{
 		system("cls");
 		printf("1.Start""\n"
 			"2.Rules""\n"
@@ -47,32 +49,39 @@ int main() {
 	} while (n != 4);
 }
 
-void setupsystem() {
+void setupsystem() 
+{
 	consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 }
 
-void ninja() {
+void ninja() 
+{
 	char a[10];
 	int step=0,i=0,triger=0,s=1000;
 	time_t c=time(0);
 	srand(c);
-	for (i = 0; i < 10; i++) {
+	for (i = 0; i < 10; i++) 
+	{
 		a[i] = 'a' + rand() % (('z' - 'a') + 1);
 	}
 	system("cls");
 	printf("\nReady?\n");
-	for (i = 0; i < 5; i++) {
+	for (i = 0; i < 5; i++)
+	{
 		printf(". ");
 		Sleep(800);
 	}
 	printf("\nGo!\n");
 	Sleep(1500);
 	system("cls");
-	for (i = 0; i < 10; i++) {
-		if (i < step) {
+	for (i = 0; i < 10; i++) 
+	{
+		if (i < step) 
+		{
 			printf("%c", a[i]);
 		}
-		else {
+		else 
+		{
 			printf("%c", a[i]);
 		}
 	}
@@ -82,37 +91,47 @@ void ninja() {
 		printf("\n%i", s);
 		char input = _getch();
 		triger = 0;
-		if (input == a[step]) {
+		if (input == a[step]) 
+		{
 			step++;
 			system("cls");
-			for (i = 0; i < 10; i++) {
-				if (i < step) {
+			for (i = 0; i < 10; i++) 
+			{
+				if (i < step) 
+				{
 					SetConsoleTextAttribute(consoleHandle, 10);
 					printf("%c", a[i]);
 					SetConsoleTextAttribute(consoleHandle, 15);
 				}
-				else {
+				else 
+				{
 
 					printf("%c", a[i]);
 
 				}
 			}
 		}
-		else {
+		else 
+		{
 			system("cls");
-			for (i = 0; i < 10; i++) {
-				if (i < step) {
+			for (i = 0; i < 10; i++) 
+			{
+				if (i < step) 
+				{
 					SetConsoleTextAttribute(consoleHandle, 10);
 					printf("%c", a[i]);
 				}
-				else {
-					if ((a[i] == a[step]) && (triger==0)) {
+				else 
+				{
+					if ((a[i] == a[step]) && (triger==0)) 
+					{
 						SetConsoleTextAttribute(consoleHandle, 12);
 						printf("%c", a[i]);
 						triger = 1;
 						s=s-10;
 					}
-					else {
+					else 
+					{
 						SetConsoleTextAttribute(consoleHandle, 15);
 						printf("%c", a[i]);
 					
@@ -127,11 +146,14 @@ void ninja() {
 	} while (step < 10);
 	system("cls");
 	SetConsoleTextAttribute(consoleHandle, 10);
-	for (i = 0; i < 10; i++) {
-		if (i < step) {
+	for (i = 0; i < 10; i++) 
+	{
+		if (i < step) 
+		{
 			printf("%c", a[i]);
 		}
-		else {
+		else 
+		{
 			printf("%c", a[i]);
 		}
 	}
