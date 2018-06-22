@@ -121,11 +121,12 @@ void ninja()
 	clock_t t0 = clock(); 
 	do
 	{
-		printf("\n%i", s);
+		printf("\nPoints:%i", s);
 		char input = _getch();
 		triger = 0;
 		if (input == a[step]) 
 		{
+			if (input == 32 && a[step] == 32) a[step] = '_';
 			step++;
 			system("cls");
 			for (i = 0; i < len; i++) 
@@ -172,7 +173,7 @@ void ninja()
 				}
 			}
 			SetConsoleTextAttribute(consoleHandle, 15);
-			printf("\t\t\tYou made a mistake");
+			printf("\nYou made a mistake");
 		}
 
 	
@@ -192,7 +193,7 @@ void ninja()
 	}
 	SetConsoleTextAttribute(consoleHandle, 15);
 	clock_t t1 = clock(); 
-	printf("               Score: %i\n",(s/((t1-t0)/CLK_TCK)));
+	printf("\nScore: %i\n",(s/((t1-t0)/CLK_TCK)));
 	printf("\nBRAVO\n");
 	system("pause");
 }
