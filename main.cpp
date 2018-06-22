@@ -7,11 +7,14 @@
 #include <ctype.h>
 #include <ctime> 
 
-HANDLE consoleHandle = 0;
+char *a;
+int len;
 
+HANDLE consoleHandle = 0;
 
 void setupsystem();
 void ninja();
+void textinit();
 
 int main() 
 {
@@ -54,16 +57,46 @@ void setupsystem()
 	consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 }
 
+void textinit() 
+{
+	FILE *file_ptr;
+	int n;
+	printf("Select the complexity of the text\n1.Easy\n2.Medium\n3.HARD\n");
+	scanf("%d", &n);
+	switch (n)
+	{
+	case 1:
+		len = 104;
+		a = new char[len+1];
+		file_ptr = fopen("EzText.txt", "r");
+		fgets(a, len+1, file_ptr);
+		break;
+	case 2:
+		len = 144;
+		a = new char[len+1];
+		file_ptr = fopen("MedText.txt", "r");
+		fgets(a, len+1, file_ptr);
+		break;
+	case 3:
+		len = 205;
+		a = new char[len+1];
+		file_ptr = fopen("HardText.txt", "r");
+		fgets(a, len+1, file_ptr);
+		break;
+	default:
+
+		break;
+	}
+
+}
+
 void ninja() 
 {
-	char a[10];
+	system("cls");
+	textinit();
 	int step=0,i=0,triger=0,s=1000;
 	time_t c=time(0);
 	srand(c);
-	for (i = 0; i < 10; i++) 
-	{
-		a[i] = 'a' + rand() % (('z' - 'a') + 1);
-	}
 	system("cls");
 	printf("\nReady?\n");
 	for (i = 0; i < 5; i++)
@@ -74,7 +107,7 @@ void ninja()
 	printf("\nGo!\n");
 	Sleep(1500);
 	system("cls");
-	for (i = 0; i < 10; i++) 
+	for (i = 0; i < len; i++) 
 	{
 		if (i < step) 
 		{
@@ -88,14 +121,15 @@ void ninja()
 	clock_t t0 = clock(); 
 	do
 	{
-		printf("\n%i", s);
+		printf("\nPoints:%i", s);
 		char input = _getch();
 		triger = 0;
 		if (input == a[step]) 
 		{
+			if (input == 32 && a[step] == 32) a[step] = '_';
 			step++;
 			system("cls");
-			for (i = 0; i < 10; i++) 
+			for (i = 0; i < len; i++) 
 			{
 				if (i < step) 
 				{
@@ -114,7 +148,7 @@ void ninja()
 		else 
 		{
 			system("cls");
-			for (i = 0; i < 10; i++) 
+			for (i = 0; i < len; i++) 
 			{
 				if (i < step) 
 				{
@@ -139,14 +173,14 @@ void ninja()
 				}
 			}
 			SetConsoleTextAttribute(consoleHandle, 15);
-			printf("\t\t\tYou made a mistake");
+			printf("\nYou made a mistake");
 		}
 
 	
-	} while (step < 10);
+	} while (step < len);
 	system("cls");
 	SetConsoleTextAttribute(consoleHandle, 10);
-	for (i = 0; i < 10; i++) 
+	for (i = 0; i < len; i++) 
 	{
 		if (i < step) 
 		{
@@ -159,7 +193,7 @@ void ninja()
 	}
 	SetConsoleTextAttribute(consoleHandle, 15);
 	clock_t t1 = clock(); 
-	printf("               Score: %i\n",(s/((t1-t0)/CLK_TCK)));
+	printf("\nScore: %i\n",(s/((t1-t0)/CLK_TCK)));
 	printf("\nBRAVO\n");
 	system("pause");
 }
