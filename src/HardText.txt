@@ -1,0 +1,1 @@
+In quantum mechanics, the Schrodinger equation is a mathematical equation that describes the changes over time of a physical system in which quantum effects, such as wave particle duality, are significant.
