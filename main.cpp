@@ -21,6 +21,7 @@ HANDLE consoleHandle = 0;
 void setupsystem();
 void ninja();
 void textinit();
+void results();
 
 int main() 
 {
@@ -51,6 +52,9 @@ int main()
 			"\t\t\tThe session will end when you are typed all the text on the screen; your final score will be calculated by this formula-'your points/the time you are spent to type the text'.""\n\n\n"
 			"\t\t\t\t\t\t\t\t\t\t\t\t\tGOOD LUCK & HAVE FUN!\n\n\n\n\n\n");
 			system("pause");
+			break;
+		case 3:
+			results();
 			break;
 		default: break;
 		
@@ -227,6 +231,7 @@ void ninja()
 		fprintf(rec, "Hard\tscore = %s  \n", zap);
 		}
 		printf("\nBRAVO\n");
+		printf("\nTo update the result table, restart the program\n");
 		system("pause");
 	}
 	else
@@ -234,4 +239,34 @@ void ninja()
 		printf("\nSee you next time!\n");
 		system("pause");
 	}
+}
+
+void results()
+{
+	int g;
+	system("cls");
+	rec = fopen("results.txt", "r");
+	while(fgets(zap,dl,rec))
+	{	
+		fprintf(stdout, "%s", zap);
+	}
+	printf("\n1. Clean the results board\n");
+	printf("\n2. Exit\n");
+	scanf("%d", &g);
+	do
+	{
+		switch(g)
+		{
+		case 1:
+			rec = fopen("results.txt", "w");
+			break;
+		case 2:
+			break;
+		default:
+			printf("invalid input");
+			Sleep(800);
+			break;
+		}
+	} while (g != 2 && g != 1);
+	system("pause");
 }
