@@ -14,12 +14,14 @@ char *a;
 int len;
 int score;
 int dif;
+int res;
 
 HANDLE consoleHandle = 0;
 
 void setupsystem();
 void ninja();
 void textinit();
+void results();
 
 int main() 
 {
@@ -50,6 +52,9 @@ int main()
 			"\t\t\tThe session will end when you are typed all the text on the screen; your final score will be calculated by this formula-'your points/the time you are spent to type the text'.""\n\n\n"
 			"\t\t\t\t\t\t\t\t\t\t\t\t\tGOOD LUCK & HAVE FUN!\n\n\n\n\n\n");
 			system("pause");
+			break;
+		case 3:
+			results();
 			break;
 		default: break;
 		
@@ -209,18 +214,59 @@ void ninja()
 	printf("\nScore: %i\n",score);
 	rec = fopen("results.txt", "a");
 	ltoa(score, zap, 10);
-	if(dif==1)
+	printf("\nDo you want to save your result?\n 1-Yes 2-No\n");
+	scanf("%d", &res);
+	if(res==1)
 	{
+		if(dif==1)
+		{
 		fprintf(rec, "Easy\tscore = %s  \n", zap);
-	}
-	if(dif==2)
-	{
+		}
+		if(dif==2)
+		{
 		fprintf(rec, "Medium\tscore = %s  \n", zap);
-	}
-	if(dif==3)
-	{
+		}
+		if(dif==3)
+		{
 		fprintf(rec, "Hard\tscore = %s  \n", zap);
+		}
+		printf("\nBRAVO\n");
+		printf("\nTo update the result table, restart the program\n");
+		system("pause");
 	}
-	printf("\nBRAVO\n");
+	else
+	{
+		printf("\nSee you next time!\n");
+		system("pause");
+	}
+}
+
+void results()
+{
+	int g;
+	system("cls");
+	rec = fopen("results.txt", "r");
+	while(fgets(zap,dl,rec))
+	{	
+		fprintf(stdout, "%s", zap);
+	}
+	printf("\n1. Clean the results board\n");
+	printf("\n2. Exit\n");
+	scanf("%d", &g);
+	do
+	{
+		switch(g)
+		{
+		case 1:
+			rec = fopen("results.txt", "w");
+			break;
+		case 2:
+			break;
+		default:
+			printf("invalid input");
+			Sleep(800);
+			break;
+		}
+	} while (g != 2 && g != 1);
 	system("pause");
 }
