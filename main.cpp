@@ -6,9 +6,13 @@
 #include <iostream>
 #include <ctype.h>
 #include <ctime> 
+#define dl 100
 
+FILE *rec;
+char zap[dl];
 char *a;
 int len;
+int score;
 
 HANDLE consoleHandle = 0;
 
@@ -64,7 +68,7 @@ void textinit()
 	do
 	{
 		system("cls");
-		printf("Select the complexity of the text\n1.Easy\n2.Medium\n3.HARD\n");
+		printf("Select the difficulty of the text\n1.Easy\n2.Medium\n3.HARD\n");
 		scanf("%d", &n);
 		switch (n)
 		{
@@ -103,13 +107,13 @@ void ninja()
 	srand(c);
 	system("cls");
 	printf("\nReady?\n");
-	for (i = 0; i < 5; i++)
+	for (i = 1; i < 6; i++)
 	{
-		printf(". ");
-		Sleep(800);
+		printf("%d ", i);
+		Sleep(300);
 	}
 	printf("\nGo!\n");
-	Sleep(1500);
+	Sleep(800);
 	system("cls");
 	for (i = 0; i < len; i++) 
 	{
@@ -197,7 +201,11 @@ void ninja()
 	}
 	SetConsoleTextAttribute(consoleHandle, 15);
 	clock_t t1 = clock(); 
-	printf("\nScore: %i\n",(s/((t1-t0)/CLK_TCK)));
+	score = s/((t1-t0)/CLK_TCK);
+	printf("\nScore: %i\n",score);
+	rec = fopen("results.txt", "a");
+	ltoa(score, zap, 10);
+	fprintf(rec, "%s  \n", zap);
 	printf("\nBRAVO\n");
 	system("pause");
 }
