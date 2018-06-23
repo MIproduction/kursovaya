@@ -13,6 +13,7 @@ char zap[dl];
 char *a;
 int len;
 int score;
+int dif;
 
 HANDLE consoleHandle = 0;
 
@@ -29,7 +30,7 @@ int main()
 		system("cls");
 		printf("1.Start""\n"
 			"2.Rules""\n"
-			"3.Records""\n"
+			"3.Results""\n"
 			"4.Exit""\n");
 		printf("Enter the menu item:");
 		scanf("%d", &n);
@@ -73,18 +74,21 @@ void textinit()
 		switch (n)
 		{
 		case 1:
+			dif=1;
 			len = 104;
 			a = new char[len+1];
 			file_ptr = fopen("EzText.txt", "r");
 			fgets(a, len+1, file_ptr);
 			break;
 		case 2:
+			dif=2;
 			len = 144;
 			a = new char[len+1];
 			file_ptr = fopen("MedText.txt", "r");
 			fgets(a, len+1, file_ptr);
 			break;
 		case 3:
+			dif=3;
 			len = 205;
 			a = new char[len+1];
 			file_ptr = fopen("HardText.txt", "r");
@@ -205,7 +209,18 @@ void ninja()
 	printf("\nScore: %i\n",score);
 	rec = fopen("results.txt", "a");
 	ltoa(score, zap, 10);
-	fprintf(rec, "%s  \n", zap);
+	if(dif==1)
+	{
+		fprintf(rec, "Easy\tscore = %s  \n", zap);
+	}
+	if(dif==2)
+	{
+		fprintf(rec, "Medium\tscore = %s  \n", zap);
+	}
+	if(dif==3)
+	{
+		fprintf(rec, "Hard\tscore = %s  \n", zap);
+	}
 	printf("\nBRAVO\n");
 	system("pause");
 }
