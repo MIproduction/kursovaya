@@ -14,6 +14,7 @@ char *a;
 int len;
 int score;
 int dif;
+int res;
 
 HANDLE consoleHandle = 0;
 
@@ -209,18 +210,28 @@ void ninja()
 	printf("\nScore: %i\n",score);
 	rec = fopen("results.txt", "a");
 	ltoa(score, zap, 10);
-	if(dif==1)
+	printf("\nDo you want to save your result?\n 1-Yes 2-No\n");
+	scanf("%d", &res);
+	if(res==1)
 	{
+		if(dif==1)
+		{
 		fprintf(rec, "Easy\tscore = %s  \n", zap);
-	}
-	if(dif==2)
-	{
+		}
+		if(dif==2)
+		{
 		fprintf(rec, "Medium\tscore = %s  \n", zap);
-	}
-	if(dif==3)
-	{
+		}
+		if(dif==3)
+		{
 		fprintf(rec, "Hard\tscore = %s  \n", zap);
+		}
+		printf("\nBRAVO\n");
+		system("pause");
 	}
-	printf("\nBRAVO\n");
-	system("pause");
+	else
+	{
+		printf("\nSee you next time!\n");
+		system("pause");
+	}
 }
