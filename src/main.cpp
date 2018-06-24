@@ -28,13 +28,13 @@ int main()
 			break;
 		case 2:
 			system("cls");
-			printf("\n\n\n\n\n\n\n"
-				"\t\t\t\t\t\t\t\t\t\t\t\t                Rules\n"
-				"\t\t\tKeyboardNinja is a program that can help you improve your typing skills on the keyboard. And you can track your progress with high score table that is in 'Records' menu item.""\n "
-				"\t\t\tRules of this program are very simple: in 'Start' menu item you can choose the difficult of the text; you need to type the text on the screen;""\n"
-				"\t\t\tAt the start of session you will have 1000 points; if you typed the right symbol it will change color to green,otherwise it will change color to red and you will lose 10 points;""\n"
-				"\t\t\tThe session will end when you are typed all the text on the screen; your final score will be calculated by this formula-'your points/the time you are spent to type the text'.""\n\n\n"
-				"\t\t\t\t\t\t\t\t\t\t\t\t\tGOOD LUCK & HAVE FUN!\n\n\n\n\n\n");
+			printf(
+				"Rules\n"
+				"KeyboardNinja is a program that can help you improve your typing skills on the keyboard.\nAnd you can track your progress with high score table that is in 'Records' menu item.\n"
+				"Rules of this program are very simple: in 'Start' menu item you can choose the difficult of the text;\nyou need to type the text on the screen;\n"
+				"At the start of session you will have 1000 points;\nif you typed the right symbol it will change color to green,otherwise it will change color to red and you will lose 10 points;\n"
+				"The session will end when you are typed all the text on the screen;\nyour final score will be calculated by this formula-'your points/the time you are spent to type the text'.""\n\n\n"
+				"GOOD LUCK & HAVE FUN!\n\n\n\n\n\n");
 			system("pause");
 			break;
 		case 3:

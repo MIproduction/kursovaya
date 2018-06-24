@@ -36,10 +36,7 @@ void ninja()
 	printf("\nGo!\n");
 	Sleep(800);
 	system("cls");
-	//for (i = 0; i < len; i++)
-	//{
-			printf("%s", a);
-	//}
+	printf("%s", a);
 	clock_t t0 = clock();
 	do
 	{
@@ -61,9 +58,7 @@ void ninja()
 				}
 				else
 				{
-
 					printf("%c", a[i]);
-
 				}
 			}
 		}
@@ -90,7 +85,6 @@ void ninja()
 					{
 						SetConsoleTextAttribute(consoleHandle, 15);
 						printf("%c", a[i]);
-
 					}
 				}
 			}
@@ -141,7 +135,6 @@ void ninja()
 			}
 			printf("\nBRAVO\n");
 			printf("\nTo update the result table, restart the program\n");
-			system("pause");
 		}
 		else
 		{	
@@ -152,6 +145,6 @@ void ninja()
 			}
 		}
 	} while (res != 2 && res != 1);
-		printf("\nSee you next time!\n");
-		system("pause");
+	printf("\nSee you next time!\n");
+	system("pause");
 }
