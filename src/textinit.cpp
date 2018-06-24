@@ -13,7 +13,7 @@ char *a;
 int len;
 int dif;
 
-void textinit() 
+void textinit()
 {
 	FILE *file_ptr;
 	int n;
@@ -25,25 +25,25 @@ void textinit()
 		switch (n)
 		{
 		case 1:
-			dif=1;
+			dif = 1;
 			len = 104;
-			a = new char[len+1];
+			a = new char[len + 1];
 			file_ptr = fopen("EzText.txt", "r");
-			fgets(a, len+1, file_ptr);
+			fgets(a, len + 1, file_ptr);
 			break;
 		case 2:
-			dif=2;
+			dif = 2;
 			len = 144;
-			a = new char[len+1];
+			a = new char[len + 1];
 			file_ptr = fopen("MedText.txt", "r");
-			fgets(a, len+1, file_ptr);
+			fgets(a, len + 1, file_ptr);
 			break;
 		case 3:
-			dif=3;
+			dif = 3;
 			len = 205;
-			a = new char[len+1];
+			a = new char[len + 1];
 			file_ptr = fopen("HardText.txt", "r");
-			fgets(a, len+1, file_ptr);
+			fgets(a, len + 1, file_ptr);
 			break;
 		default:
 			printf("invalid input");

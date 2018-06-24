@@ -19,12 +19,12 @@ int res;
 
 HANDLE consoleHandle = 0;
 
-void ninja() 
+void ninja()
 {
 	consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 	textinit();
-	int step=0,i=0,triger=0,s=1000;
-	time_t c=time(0);
+	int step = 0, i = 0, triger = 0, s = 1000;
+	time_t c = time(0);
 	srand(c);
 	system("cls");
 	printf("\nReady?\n");
@@ -36,37 +36,30 @@ void ninja()
 	printf("\nGo!\n");
 	Sleep(800);
 	system("cls");
-	for (i = 0; i < len; i++) 
-	{
-		if (i < step) 
-		{
-			printf("%c", a[i]);
-		}
-		else 
-		{
-			printf("%c", a[i]);
-		}
-	}
-	clock_t t0 = clock(); 
+	//for (i = 0; i < len; i++)
+	//{
+			printf("%s", a);
+	//}
+	clock_t t0 = clock();
 	do
 	{
 		printf("\nPoints:%i", s);
 		char input = _getch();
 		triger = 0;
-		if (input == a[step]) 
+		if (input == a[step])
 		{
 			if (input == 32 && a[step] == 32) a[step] = '_';
 			step++;
 			system("cls");
-			for (i = 0; i < len; i++) 
+			for (i = 0; i < len; i++)
 			{
-				if (i < step) 
+				if (i < step)
 				{
 					SetConsoleTextAttribute(consoleHandle, 10);
 					printf("%c", a[i]);
 					SetConsoleTextAttribute(consoleHandle, 15);
 				}
-				else 
+				else
 				{
 
 					printf("%c", a[i]);
@@ -74,30 +67,30 @@ void ninja()
 				}
 			}
 		}
-		else 
+		else
 		{
 			system("cls");
-			for (i = 0; i < len; i++) 
+			for (i = 0; i < len; i++)
 			{
-				if (i < step) 
+				if (i < step)
 				{
 					SetConsoleTextAttribute(consoleHandle, 10);
 					printf("%c", a[i]);
 				}
-				else 
+				else
 				{
-					if ((a[i] == a[step]) && (triger==0)) 
+					if ((a[i] == a[step]) && (triger == 0))
 					{
 						SetConsoleTextAttribute(consoleHandle, 12);
 						printf("%c", a[i]);
 						triger = 1;
-						s=s-10;
+						s = s - 10;
 					}
-					else 
+					else
 					{
 						SetConsoleTextAttribute(consoleHandle, 15);
 						printf("%c", a[i]);
-					
+
 					}
 				}
 			}
@@ -105,50 +98,60 @@ void ninja()
 			printf("\nYou made a mistake");
 		}
 
-	
+
 	} while (step < len);
-	system("cls");
-	SetConsoleTextAttribute(consoleHandle, 10);
-	for (i = 0; i < len; i++) 
+
+	clock_t t1 = clock();
+	score = s / ((t1 - t0) / CLK_TCK);
+
+	do
 	{
-		if (i < step) 
+		system("cls");
+		SetConsoleTextAttribute(consoleHandle, 10);
+		for (i = 0; i < len; i++)
 		{
-			printf("%c", a[i]);
+			if (i < step)
+			{
+				printf("%c", a[i]);
+			}
+			else
+			{
+				printf("%c", a[i]);
+			}
 		}
-		else 
+		SetConsoleTextAttribute(consoleHandle, 15);
+		printf("\nScore: %i\n", score);
+		rec = fopen("results.txt", "a");
+		_ltoa(score, zap, 10);
+		printf("\nDo you want to save your result?\n 1-Yes 2-No\n");
+		scanf("%d", &res);
+		if (res == 1)
 		{
-			printf("%c", a[i]);
+			if (dif == 1)
+			{
+				fprintf(rec, "Easy\tscore = %s  \n", zap);
+			}
+			if (dif == 2)
+			{
+				fprintf(rec, "Medium\tscore = %s  \n", zap);
+			}
+			if (dif == 3)
+			{
+				fprintf(rec, "Hard\tscore = %s  \n", zap);
+			}
+			printf("\nBRAVO\n");
+			printf("\nTo update the result table, restart the program\n");
+			system("pause");
 		}
-	}
-	SetConsoleTextAttribute(consoleHandle, 15);
-	clock_t t1 = clock(); 
-	score = s/((t1-t0)/CLK_TCK);
-	printf("\nScore: %i\n",score);
-	rec = fopen("results.txt", "a");
-	_ltoa(score, zap, 10);
-	printf("\nDo you want to save your result?\n 1-Yes 2-No\n");
-	scanf("%d", &res);
-	if(res==1)
-	{
-		if(dif==1)
-		{
-		fprintf(rec, "Easy\tscore = %s  \n", zap);
+		else
+		{	
+			if (res != 2)
+			{
+				printf("\ninvalid input\n");
+				Sleep(800);
+			}
 		}
-		if(dif==2)
-		{
-		fprintf(rec, "Medium\tscore = %s  \n", zap);
-		}
-		if(dif==3)
-		{
-		fprintf(rec, "Hard\tscore = %s  \n", zap);
-		}
-		printf("\nBRAVO\n");
-		printf("\nTo update the result table, restart the program\n");
-		system("pause");
-	}
-	else
-	{
+	} while (res != 2 && res != 1);
 		printf("\nSee you next time!\n");
 		system("pause");
-	}
 }

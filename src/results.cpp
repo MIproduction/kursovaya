@@ -15,18 +15,19 @@ extern char zap[dl];
 void results()
 {
 	int g;
-	system("cls");
-	rec = fopen("results.txt", "r");
-	while(fgets(zap,dl,rec))
-	{	
-		fprintf(stdout, "%s", zap);
-	}
-	printf("\n1. Clean the results board\n");
-	printf("\n2. Exit\n");
-	scanf("%d", &g);
+	g = 0;
 	do
-	{
-		switch(g)
+	{	
+		system("cls");
+		rec = fopen("results.txt", "r");
+		while (fgets(zap, dl, rec))
+		{
+			fprintf(stdout, "%s", zap);
+		}
+		printf("\n1. Clean the results board\n");
+		printf("\n2. Exit\n");
+		scanf("%d", &g);
+		switch (g)
 		{
 		case 1:
 			rec = fopen("results.txt", "w");
